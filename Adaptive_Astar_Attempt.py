@@ -76,7 +76,6 @@ def a_star():
     global search
     global counter
     global g
-    global n
     prev_state=start_state
     while (g[goal_state[0]][goal_state[1]]>min()):
         state=open_list[min()]
@@ -103,7 +102,6 @@ def main():
     global closed_list
     global search
     global g
-    global n
     global counter
     search = [[0 for i in range(n)] for j in range(n)] #initializes 2d array representing states to all be 0
     g=[[-1 for i in range(n)] for j in range(n)] #initializes all g values to be -1
@@ -119,9 +117,9 @@ def main():
         end_node = Node(None, goal_state)
 
         # if statement here to make check if the start_state is terrain or not
-        # TODO: Figure out how to find the current state and see if it is blocked. Talk to Shreya and Erica
-        if(start_state[0] == 'b'):
+        if(g[start_state[0][start_state[1]]] == 'b'):
             print("terrain")
+            closed_list.append()
             continue
 
         open_list.append((g[start_state[0]][start_state[0]]+h((start_state[0],start_state[1])),(start_state[0],start_state[1])))
