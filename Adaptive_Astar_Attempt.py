@@ -57,6 +57,7 @@ def actions(s):
         action.append('d')
     return action
 
+
 def h(s):
     return abs(goal_state[0]-s[0])+abs(goal_state[1]-s[1])
 
@@ -115,12 +116,6 @@ def main():
         closed_list=[]
         start_node = Node(None, start_state)
         end_node = Node(None, goal_state)
-
-        # if statement here to make check if the start_state is terrain or not
-        if(g[start_state[0][start_state[1]]] == 'b'):
-            print("terrain")
-            closed_list.append()
-            continue
 
         open_list.append((g[start_state[0]][start_state[0]]+h((start_state[0],start_state[1])),(start_state[0],start_state[1])))
         a_star()

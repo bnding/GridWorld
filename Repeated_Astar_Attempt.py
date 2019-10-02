@@ -57,6 +57,8 @@ def actions(s):
         action.append('d')
     return action
 
+
+# TODO: ask TA about the heuristic. Seems like both heuristics are the same on the pdf but should be different...
 def h(s):
     return abs(goal_state[0]-s[0])+abs(goal_state[1]-s[1])
 
