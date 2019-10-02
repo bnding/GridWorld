@@ -11,12 +11,12 @@ def drawGrid():
 def startState(grid):
     x = random.randint(0, len(grid))
     y = random.randint(0, len(grid))
-    grid[x][y] = 's'
+    grid[x][y] = 'S'
 
 def goalState(grid):
     x = random.randint(0, len(grid))
     y = random.randint(0, len(grid))
-    grid[x][y] = 'g'
+    grid[x][y] = 'G'
 
 
 def createBlocks(grid):
