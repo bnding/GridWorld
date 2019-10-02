@@ -61,6 +61,9 @@ def actions(s):
 def h(s):
     return abs(goal_state[0]-s[0])+abs(goal_state[1]-s[1])
 
+def hNew(s):
+    return (h(goal_state[0],goal_state[1])) - (h(start_state[0],start_state[1]))
+
 def min():
     for item,index in enumerate(open_list):
             if item.f < current_node.f:
@@ -117,7 +120,7 @@ def main():
         start_node = Node(None, start_state)
         end_node = Node(None, goal_state)
 
-        open_list.append((g[start_state[0]][start_state[0]]+h((start_state[0],start_state[1])),(start_state[0],start_state[1])))
+        open_list.append((g[start_state[0]][start_state[0]]+hNew((start_state[0],start_state[1])),(start_state[0],start_state[1])))
         a_star()
         if (open_list==[]):
             print("I cannot reach the target")
@@ -127,3 +130,4 @@ def main():
         #record any new obstacles in obstacle_states
     print("I reached the target")
 
+main()
