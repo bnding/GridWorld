@@ -1,4 +1,4 @@
-from random import random
+import random
 
 def drawGrid():
     grid = []
@@ -16,13 +16,13 @@ def startState(grid):
 def goalState(grid):
     x = random.randint(0, len(grid))
     y = random.randint(0, len(grid))
-    grid[x][y] = 'x'
+    grid[x][y] = 'g'
 
 
 def createBlocks(grid):
     for x in range(len(grid)):
         for y in range(len(grid)):
-            if(random() > 0.7):
+            if(random.random() > 0.7):
                 #blocked
                 grid[x][y] = 'X'
             else:
@@ -38,4 +38,6 @@ def printGraph(grid):
 
 grid = drawGrid()
 createBlocks(grid)
+startState(grid)
+goalState(grid)
 printGraph(grid)
