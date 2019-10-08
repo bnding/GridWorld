@@ -1,10 +1,11 @@
 import random
+import os
 
 def drawGrid():
     grid = []
-    for rows in range(26):
+    for rows in range(0, 101):
         grid.append([])
-        for cols in range(26):
+        for cols in range(0, 101):
             grid[rows].append(0)
     return grid
 
@@ -41,9 +42,18 @@ def printGraph(grid):
             print(grid[x][y], end = " ")
         print()
 
+def createFiles():
+    grid = drawGrid()
+    createBlocks(grid)
+    startState(grid)
+    goalState(grid)
+    for x in range(0, 50):
+        file = open("grid" + str(x), "w")
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+                file.write(grid[i][j])
+            file.write("\n")
+            print()
+        file.close()
 
-grid = drawGrid()
-createBlocks(grid)
-startState(grid)
-goalState(grid)
-printGraph(grid)
+createFiles()
