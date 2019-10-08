@@ -11,12 +11,18 @@ def drawGrid():
 def startState(grid):
     x = random.randint(0, len(grid))
     y = random.randint(0, len(grid))
-    grid[x][y] = 'S'
+    while(grid[x][y] == 'X' or grid[x][y] == 'g'):
+        x = random.randint(0, len(grid))
+        y = random.randint(0, len(grid))
+    grid[x][y] = 's'
 
 def goalState(grid):
     x = random.randint(0, len(grid))
     y = random.randint(0, len(grid))
-    grid[x][y] = 'G'
+    while(grid[x][y] == 'X' or grid[x][y] == 's'):
+        x = random.randint(0, len(grid))
+        y = random.randint(0, len(grid))
+    grid[x][y] = 'g'
 
 
 def createBlocks(grid):
