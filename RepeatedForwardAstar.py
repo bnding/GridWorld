@@ -47,11 +47,15 @@ def astar(maze, start_node, end_node, block_tag, counter):
     global open_list
     global closed_list
 
+    open_list = MinHeap()
+    print("Length of heap:", len(open_list)) #===>prints 0
     # Loop until you find the end
     while len(open_list) > 0:
-
+        print("HELLOOOOOOO")
         # Get the current node
         current_node = open_list[0]
+        print("This is the heap")
+        open_list.printHeap()
         current_index = 0
         for index, item in enumerate(open_list):
             if item.f < current_node.f:
@@ -424,6 +428,7 @@ def main():
         # initialize start_node.g
         start_node.g = 0
         start_node.h = abs(start[0] - end[0]) + abs(start[1] - end[1])
+        #print(start_node.h)
         start_node.f = start_node.g + start_node.h 
         
         # initialize end_node.g
@@ -436,6 +441,8 @@ def main():
 
         # Add the start node
         open_list.insert(start_node)
+        # print("This is the heap")
+        #open_list.printHeap()
         maze_knowledge[start_node.position[0]][start_node.position[1]][1]=counter    # search(s_start)
 
         block_tag = 2       # observe only "known" blocked cells 
