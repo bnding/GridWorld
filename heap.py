@@ -70,9 +70,26 @@ class MinHeap:
 					self.siftDown
 				i = i+1
 
+	def findGValue(self, val):
+		i = 0
+		for x in self.heap:
+			if self.heap[i].g == val:
+				return self.heap[x]
+			i = i+1
+
+	def findState(self, state):
+		i = 0
+		for x in self.heap:
+			if self.heap[i].position == state:
+				return self.heap[x]
+			i = i+1
+
 	def printHeap(self):
-		for x in len(self.heap):
-			print(self.heap[x].f)
+		i = 0
+		for x in self.heap:
+			print(self.heap[i].f, end = ' ')
+			i = i+1
+		print()
 
 	def getLeftChild(self, i):
 		return 2 * i + 1
