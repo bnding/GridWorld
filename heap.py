@@ -4,6 +4,9 @@ class MinHeap:
 	def __init__(self):
 		self.heap = []
 
+	def __len__(self):
+		return len(self.heap)
+
 	def insert(self, node):
 		self.heap.append(node)
 		self.siftUp(len(self.heap) - 1)
