@@ -58,7 +58,7 @@ class MinHeap:
 		else:
 			return 
 
-	def removeElement(self, target):
+	def removeAnyElement(self, target):
 		i = 0
 		for elements in self.heap:
 			if elements == target:
@@ -69,6 +69,14 @@ class MinHeap:
 				else:
 					self.siftDown
 				i = i+1
+
+	def removeElement(self, index):
+		self.swap(i, len(heap)-1)
+		self.heap.remove(self.heap[len(self.heap)-1])
+		if self.getParent(i) <= self.heap[i].f:
+			self.siftUp(i)
+		else:
+			self.siftDown
 
 	def findGValue(self, val):
 		i = 0
@@ -123,5 +131,6 @@ minHeap.insert(node2)
 minHeap.printHeap()
 print(minHeap.findGValue(54))
 # minHeap.removeElement(29)
+# minHeap.printHeap()
 # minHeap.removeElement(24)
 # minHeap.printHeap()
