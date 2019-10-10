@@ -62,10 +62,10 @@ class MinHeap:
             if elements == target:
                 self.swap(i, len(self.heap)-1)
                 self.heap.remove(self.heap[len(self.heap)-1])
-                if self.getParent(i) <= self.heap[i]:
-                    self.siftUp(i)
-                else:
-                    self.siftDown
+            elif self.getParent(i) <= self.heap[i]:
+                self.siftUp(i)
+            else:
+                self.siftDown
             i = i+1
 
     def printHeap(self):
@@ -91,5 +91,9 @@ for i in array:
     minHeap.insert(i)
 
 minHeap.printHeap()
-minHeap.removeElement(63)
+minHeap.deleteRoot()
+minHeap.printHeap()
+minHeap.removeElement(29)
+minHeap.printHeap()
+minHeap.removeElement(24)
 minHeap.printHeap()
