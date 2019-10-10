@@ -74,14 +74,14 @@ class MinHeap:
 		i = 0
 		for x in self.heap:
 			if self.heap[i].g == val:
-				return self.heap[x]
+				return self.heap[i]
 			i = i+1
 
 	def findState(self, state):
 		i = 0
 		for x in self.heap:
 			if self.heap[i].position == state:
-				return self.heap[x]
+				return self.heap[i]
 			i = i+1
 
 	def printHeap(self):
@@ -121,9 +121,7 @@ minHeap.insert(node)
 minHeap.insert(node2)
 
 minHeap.printHeap()
-minHeap.deleteRoot()
-minHeap.printHeap()
+print(minHeap.findGValue(54))
 # minHeap.removeElement(29)
-# minHeap.printHeap()
 # minHeap.removeElement(24)
 # minHeap.printHeap()
