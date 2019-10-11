@@ -64,6 +64,10 @@ class MinHeap:
 	def removeAnyElement(self, target):
 		i = 0
 		for elements in self.heap:
+			if len(self.heap) == 1 and elements == target:
+				self.heap.pop()
+			if len(self.heap) == 1 and elements != target:
+				break
 			if elements == target:
 				self.swap(i, len(self.heap)-1)
 				self.heap.remove(self.heap[len(self.heap)-1])
@@ -71,10 +75,16 @@ class MinHeap:
 					self.siftUp(i)
 				else:
 					self.siftDown(i)
-				i = i+1
+			i = i+1
 
 	def removeElement(self, index):
-		self.swap(index, len(heap)-1)
+		if index == 0 and len(self.heap) == 1:
+			self.heap.pop()
+			return
+		if index == 1:
+			self.heap.pop()
+			return
+		self.swap(index, len(self.heap)-1)
 		self.heap.remove(self.heap[len(self.heap)-1])
 		if self.getParent(index) <= self.heap[index].f:
 			self.siftUp(index)
