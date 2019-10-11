@@ -70,16 +70,16 @@ class MinHeap:
 				if self.getParent(i) <= self.heap[i].f:
 					self.siftUp(i)
 				else:
-					self.siftDown
+					self.siftDown(i)
 				i = i+1
 
 	def removeElement(self, index):
-		self.swap(i, len(heap)-1)
+		self.swap(index, len(heap)-1)
 		self.heap.remove(self.heap[len(self.heap)-1])
-		if self.getParent(i) <= self.heap[i].f:
-			self.siftUp(i)
+		if self.getParent(index) <= self.heap[index].f:
+			self.siftUp(index)
 		else:
-			self.siftDown
+			self.siftDown(index)
 
 	def findGValue(self, val):
 		i = 0
@@ -114,25 +114,25 @@ class MinHeap:
 	def hasLeftChild(self, i):
 		return self.getLeftChild(i) < len(self.heap)
 
-minHeap = MinHeap()
-node = Node(None, None)
-node.g = 54
-node.h = 30
-node.f = 20
-node2 = Node(None, None)
-node2.g = 30
-node2.h = 18
-node2.f = 56
+# minHeap = MinHeap()
+# node = Node(None, None)
+# node.g = 54
+# node.h = 30
+# node.f = 20
+# node2 = Node(None, None)
+# node2.g = 30
+# node2.h = 18
+# node2.f = 56
 #array = [45, 99, 63, 27, 29, 57, 42, 35, 12, 24]
 
 # for i in array:
 # 	minHeap.insert(i)
 
-minHeap.insert(node)
-minHeap.insert(node2)
+# minHeap.insert(node)
+# minHeap.insert(node2)
 
-minHeap.printHeap()
-print(minHeap.findGValue(54))
+# minHeap.printHeap()
+# print(minHeap.findGValue(54))
 # minHeap.removeElement(29)
 # minHeap.printHeap()
 # minHeap.removeElement(24)
