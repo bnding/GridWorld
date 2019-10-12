@@ -78,18 +78,18 @@ class MinHeap:
 			i = i+1
 
 	def removeElement(self, index):
-		if index == 0 and len(self.heap) == 1:
-			self.heap.pop()
-			return
-		if index == 1:
-			self.heap.pop()
+		if len(self.heap) <= 2:
+			if index == 0:
+				self.deleteRoot()
+			elif index == 1:
+				self.heap.pop()
 			return
 		self.swap(index, len(self.heap)-1)
 		self.heap.remove(self.heap[len(self.heap)-1])
-		if self.getParent(index) <= self.heap[index].f:
-			self.siftUp(index)
+		if self.getParent(index-1) <= self.heap[index-1].f:
+			self.siftUp(index-1)
 		else:
-			self.siftDown(index)
+			self.siftDown(index-1)
 
 	def findGValue(self, val):
 		i = 0
