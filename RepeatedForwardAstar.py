@@ -4,11 +4,6 @@ from copy import copy, deepcopy
 from Node import *
 from heap import *
 
-global open_list
-global closed_list
-
-open_list = MinHeap()
-
 # get current node's children list based on its valid actions 
 # assuming that actions to and from the "known" blocked cells were eliminated  
 def get_children(current_node, maze, block_tag, children):
@@ -48,31 +43,28 @@ def get_children(current_node, maze, block_tag, children):
 
 def astar(maze, start_node, end_node, block_tag, counter):
     """Returns a list of tuples as a path from start to end in the given maze"""
+    global open_list
+    global closed_list
 
-    print("Length of heap:", len(open_list)) #===>prints 0
+    #print("Length of heap:", len(open_list)) #===>prints 0
     current_node = Node(None, None)
     # Loop until you find the end
     while len(open_list) > 0:
-        print("HELLOOOOOOO")
+       # print("HELLOOOOOOO")
         # Get the current node
         current_node = open_list.heap[0]
-        print("This is the heap")
-        open_list.printHeap()
+        #print("This is the heap")
+        #open_list.printHeap()
         current_index = 0
         index = 0
         for item in open_list.heap:
-            print("This is the index")
-            print(index)
-            if item.f < current_node.f:
-                current_node = item
-                current_index = index
-            elif (item.f == current_node.f) and (item.g > current_node.g):  # tie breaker, get high g(s)
+            #print("This is the index")
+            #print(index)
+            if (item.f == current_node.f) and (item.g > current_node.g):  # tie breaker, get high g(s)
             # elif (item.f == current_node.f) and (item.g < current_node.g):  # tie breaker, get low g(s)
                 current_node = item
                 current_index = index
             index = index+1
-
-        print(index)
 
         # goal test, if it is the goal, return the path
         if current_node == end_node:
@@ -85,7 +77,10 @@ def astar(maze, start_node, end_node, block_tag, counter):
 
         # expand current node: 
         # pop current off open list, add to closed list
-        open_list.removeElement(index-1)
+        if current_index == 0:
+            open_list.deleteRoot()
+        else:
+            open_list.removeElement(current_index)
         closed_list.append(current_node)
 
         # Generate children
@@ -147,11 +142,12 @@ def astar(maze, start_node, end_node, block_tag, counter):
                 if child == elem:
                     in_open_list = 1
                     if child.g < elem.g:
-                        open_list.removeElement(index)
+                        open_list.removeElement(index-1)
                         open_list.insert(child)
                 index = index+1
             if in_open_list == 1:
                 continue
+            index = index-1
 
 # -----------------------------------------------------------------------------------------
 # function: move_agent_from_start_to_goal()
